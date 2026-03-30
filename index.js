@@ -29,10 +29,15 @@ async function run() {
       const tourismCollection = client
       .db("tourismDB")
       .collection("touristSpots");
-app.post("/addTouristSpot", async (req, res) => {
+app.post("/spots", async (req, res) => {
+  try{
   const spot = req.body;
   const result = await tourismCollection.insertOne(spot);
   res.send(result);
+  }catch(err){
+    console.error(err);
+    res.status(500).send({ error: "Failed to add spot" });
+  }
 });
 
  app.get("/spots", async (req, res) => {
