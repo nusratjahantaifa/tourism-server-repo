@@ -76,7 +76,7 @@ const updatedSpot = req.body;
         $set: updatedSpot,
       };
 
-  const result = await spotsCollection.updateOne(filter, updateDoc);
+  const result = await tourismCollection.updateOne(filter, updateDoc);
 
   res.send(result);
 
